@@ -23,6 +23,22 @@ namespace RecipeManager.Entities
         #endregion
 
 
+        #region Constructors
+        public Ingredient(string name, decimal price, IngredientKind ingredientKind)
+        {
+            Name = name;
+            Price = price;
+            IngredientKind = ingredientKind;
+        }
+
+        public Ingredient(int id, string name, decimal price, IngredientKind ingredientKind)
+            : this(name, price, ingredientKind)
+        {
+            this.id = id;
+        }
+        #endregion
+
+
         #region Properties
         /// <summary>gets the id of this object.</summary>
         public int Id => id;
