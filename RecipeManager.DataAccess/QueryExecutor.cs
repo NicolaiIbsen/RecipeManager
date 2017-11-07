@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace RecipeManager.DataAccess
 {
@@ -36,7 +32,7 @@ namespace RecipeManager.DataAccess
 
 
         #region Methods
-        /// <summary>Executes the provided <paramref name="sqlQuery"/> against the database, and returns a <see cref="DataSet"/> containing any data returned from the database.</summary>
+        /// <summary>Executes the provided <paramref name="sqlQuery"/> against the database, and returns a <see cref="DataSet"/> containing any data returned from the database. Can be overridden in a derived class.</summary>
         /// <param name="sqlQuery">The sQL query to execute.</param>
         /// <returns>A <see cref="DataSet"/> containing any data returned from the database.</returns>
         public virtual DataSet Execute(string sqlQuery)
