@@ -5,6 +5,11 @@ VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeManager.Gui", "RecipeManager.Gui\RecipeManager.Gui.csproj", "{D337A9FF-10E6-4757-9630-0DB7B9F88898}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sql", "Sql", "{6A38B0D6-2239-4B39-AA5A-3B892DEDED82}"
+	ProjectSection(SolutionItems) = preProject
+		..\CreateDb.sql = ..\CreateDb.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
