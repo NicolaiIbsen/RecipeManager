@@ -92,7 +92,7 @@ namespace RecipeManager.Entities
             => price > default(decimal) ? (true, Empty) : (false, "negativ værdi ikke tilladt");
 
         public override string ToString()
-            => $"{(name.EndsWith("s") ? name : name + "s")} is a {ingredientKind} and costs {price.ToString("C")} per kg.";
+            => $"{name} er {ingredientKind} og koster {price.ToString("C")} pr. kg. at lave";
         #endregion
     }
 }

@@ -93,19 +93,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\RecipeManager.DataAccess\RecipeManager.DataAccess.csproj">
-      <Project>{b9e21ba5-a112-428a-8ca3-a7ef39189568}</Project>
-      <Name>RecipeManager.DataAccess</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RecipeManager.Entities\RecipeManager.Entities.csproj">
-      <Project>{f61742eb-6f0d-452b-b328-8839e059b8db}</Project>
-      <Name>RecipeManager.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RecipeManager.Services\RecipeManager.Services.csproj">
-      <Project>{1c1d7091-1584-432b-bec0-0b98d9e8a48e}</Project>
-      <Name>RecipeManager.Services</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
