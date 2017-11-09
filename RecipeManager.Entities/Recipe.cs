@@ -22,6 +22,19 @@ namespace RecipeManager.Entities
             Name = name;
             RecipeId = recipeId;
         }
+        public Recipe(string name, List<Ingredient> ingredients)
+        {
+            Name = name;
+            Ingredients = ingredients;
+        }
+        public Recipe(string name)
+        {
+            Name = name;
+        }
+        public Recipe()
+        {
+
+        }
         #endregion
 
 
@@ -33,21 +46,18 @@ namespace RecipeManager.Entities
 
 
         #region Methods
-        public List<IngredientType> GetIngredientType()
-        {
-            return new List<IngredientType>();
-        }
         public decimal GetPrice()
         {
-            return 5;
-        }
-        public Recipe(string name, List<Ingredient> ingredients)
-        {
-
+            decimal price = 0;
+            for( int i = 0; i < ingredients.Count; i++ )
+            {
+                price += ingredients[i].Price;
+            }
+            return price;
         }
         public override string ToString()
         {
-            return base.ToString();
+            return $"{name}";
         }
         #endregion
     }

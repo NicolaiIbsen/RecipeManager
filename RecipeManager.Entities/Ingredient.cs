@@ -11,18 +11,28 @@ namespace RecipeManager.Entities
         #region Fields
         private int ingredientId;
         private string name;
-        private string price;
+        private decimal price;
         private IngredientType type;
         #endregion
 
 
         #region Contructor
-        public Ingredient(int ingredientId, string name, string price, IngredientType type)
+        public Ingredient(int id, string name, decimal price, IngredientType type)
         {
-            IngredientId = ingredientId;
+            ingredientId = id;
             Name = name;
             Price = price;
             Type = type;
+        }
+        public Ingredient(string name, decimal price, IngredientType type)
+        {
+            Name = name;
+            Price = price;
+            Type = type;
+        }
+        public Ingredient(string name)
+        {
+            Name = name;
         }
         #endregion
 
@@ -30,19 +40,20 @@ namespace RecipeManager.Entities
         #region Properties
         public int IngredientId { get => ingredientId; set => ingredientId = value; }
         public string Name { get => name; set => name = value; }
-        public string Price { get => price; set => price = value; }
+        public decimal Price { get => price; set => price = value; }
         public IngredientType Type { get => type; set => type = value; }
         #endregion
 
 
         #region Methods
-        public Ingredient(decimal price, string name, IngredientType type)
+        public List<string> GetListOfEnum()
         {
+            return Enum.GetNames(typeof(IngredientType)).ToList();
 
         }
         public override string ToString()
         {
-            return base.ToString();
+            return $"{ingredientId} {name} {price} {type}";
         }
         #endregion
     }
