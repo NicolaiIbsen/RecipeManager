@@ -1,0 +1,19 @@
+﻿{
+  "batchcomplete": "",
+  "query": {
+    "normalized": [
+      {
+        "from": "ksdsds",
+        "to": "Ksdsds"
+      }
+    ],
+    "pages": {
+      "-1": {
+        "ns": 0,
+        "title": "Ksdsds",
+        "missing": ""
+      }
+    }
+  },
+  "limits": { "extracts": 20 }
+}

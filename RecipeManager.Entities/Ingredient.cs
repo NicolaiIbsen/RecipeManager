@@ -17,9 +17,9 @@ namespace RecipeManager.Entities
 
 
         #region Contructor
-        public Ingredient(int id, string name, decimal price, IngredientType type)
+        public Ingredient(int ingredientId, string name, decimal price, IngredientType type)
         {
-            ingredientId = id;
+            IngredientId = ingredientId;
             Name = name;
             Price = price;
             Type = type;
@@ -30,22 +30,47 @@ namespace RecipeManager.Entities
             Price = price;
             Type = type;
         }
-        public Ingredient(string name)
+        public Ingredient()
         {
-            Name = name;
+
         }
         #endregion
 
 
         #region Properties
         public int IngredientId { get => ingredientId; set => ingredientId = value; }
-        public string Name { get => name; set => name = value; }
+        public string Name
+        {
+            get => name;
+            set
+            {
+                (bool isValid, string error) = IsValidName(value);
+                if( !isValid )
+                    throw new ArgumentException(error, nameof(name));
+                else
+                {
+                    name = value;
+                }
+            }
+        }
         public decimal Price { get => price; set => price = value; }
         public IngredientType Type { get => type; set => type = value; }
         #endregion
 
 
         #region Methods
+        public static (bool, string) IsValidName(string name)
+        {
+            if( String.IsNullOrWhiteSpace(name) )
+            {
+                return (false, "Blank eller tom");
+            }
+            else if( !name.All(c => Char.IsLetter(c)) )
+            {
+                return (false, "Kan ikke have tal i et navn");
+            }
+            return (true, String.Empty);
+        }
         public List<string> GetListOfEnum()
         {
             return Enum.GetNames(typeof(IngredientType)).ToList();

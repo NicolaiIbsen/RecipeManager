@@ -19,12 +19,12 @@ namespace RecipeManager.DBAccess
             DataTable table = set.Tables[0];
             foreach( DataRow row in table.Rows )
             {
+                int id = (int)row["IngredientId"];
                 string name = (string)row["IngredientName"];
                 decimal price = (decimal)row["Price"];
                 IngredientType type = (IngredientType)Enum.Parse(typeof(IngredientType), (string)row["IngredientType"]);
-                ingredients.Add(new Ingredient(name, price, type));
+                ingredients.Add(new Ingredient(id, name, price, type));
             }
-
             return ingredients;
         }
         public List<Recipe> GetAllRecipes()
@@ -52,27 +52,25 @@ namespace RecipeManager.DBAccess
             DataTable table = set.Tables[0];
             foreach( DataRow row in table.Rows )
             {
+                int id = (int)row["IngredientId"];
                 string name = (string)row["IngredientName"];
                 decimal price = (decimal)row["Price"];
                 string type = (string)row["IngredientType"];
                 if( recipe == (string)row["RecipeName"] )
                 {
-                    ingredients.Add(new Ingredient(name, price, IngredientType.Dairy));
+                    ingredients.Add(new Ingredient(id, name, price, (IngredientType)Enum.Parse(typeof(IngredientType), (string)row["IngredientType"])));
                 }
             }
             return ingredients;
         }
-        /*public Ingredient GetIngredientByName(string name)
-        {
-        }*/
         public Recipe GetRecipeByName(string recipe)
         {
             List<Ingredient> ingredients = new List<Ingredient>(0);
             List<decimal> costOfRecipe = new List<decimal>();
-            string sql = $"SELECT RecipesIngredients.RecipeIngredientID, Recipes.RecipeID, Recipes.RecipeName, Ingredients.IngredientId, Ingredients.IngredientType, Ingredients.IngredientName, Ingredients.Price " +
+            string sql = $"SELECT RecipesIngredients.RecipeIngredientId, Recipes.RecipeId, Recipes.RecipeName, Ingredients.IngredientId, Ingredients.IngredientType, Ingredients.IngredientName, Ingredients.Price " +
                 $"FROM RecipesIngredients " +
-                $"JOIN Recipes ON Recipes.RecipeID = RecipesIngredients.RecipeID " +
-                $"JOIN Ingredients ON Ingredients.IngredientID = RecipesIngredients.IngredientID";
+                $"JOIN Recipes ON Recipes.RecipeId = RecipesIngredients.RecipeId " +
+                $"JOIN Ingredients ON Ingredients.IngredientId = RecipesIngredients.IngredientId";
             DataSet set = Executor.Execute(sql);
             DataTable table = set.Tables[0];
             foreach( DataRow row in table.Rows )
@@ -87,6 +85,12 @@ namespace RecipeManager.DBAccess
                 }
             }
             return new Recipe(recipe, ingredients);
+        }
+        public void SaveIngredient(Ingredient ingredient)
+        {
+            string sql = "INSERT INTO Ingredients (IngredientName, Price, IngredientType)" +
+                $"VALUES('{ingredient.Name}', {ingredient.Price}, '{ingredient.Type}')";
+            Executor.Execute(sql);
         }
     }
 }

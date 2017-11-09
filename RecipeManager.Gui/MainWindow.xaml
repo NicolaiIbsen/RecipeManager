@@ -17,7 +17,8 @@
                Header="Opskrifter">
         <Grid Background="#FEFEFE">
           <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="93*" />
+            <ColumnDefinition Width="83*" />
+            <ColumnDefinition Width="9.6" />
             <ColumnDefinition Width="228*" />
             <ColumnDefinition Width="259*" />
           </Grid.ColumnDefinitions>
@@ -28,7 +29,7 @@
                    VerticalAlignment="Top"
                    Width="188"
                    SelectionChanged="ListBoxRecipeList_SelectionChanged"
-                   Grid.ColumnSpan="2">
+                   Grid.ColumnSpan="3">
 
           </ListBox>
           <Label Content="Opskrifter:"
@@ -38,11 +39,11 @@
           <GroupBox Header="Detaljer"
                     HorizontalAlignment="Left"
                     Height="280"
-                    Margin="121,32,0,0"
+                    Margin="121.2,32,0,0"
                     VerticalAlignment="Top"
                     Width="356"
                     Grid.ColumnSpan="2"
-                    Grid.Column="1">
+                    Grid.Column="2">
             <Grid HorizontalAlignment="Left"
                   Height="250"
                   Margin="0,10,-3.6,-2.4"
@@ -102,21 +103,21 @@
             <ColumnDefinition Width="228*" />
             <ColumnDefinition Width="259*" />
           </Grid.ColumnDefinitions>
-          <ListBox x:Name="listBoxIngredienser"
+          <DataGrid x:Name="dataGridIngredienser"
                     HorizontalAlignment="Left"
                     Height="271"
                     Margin="10,41,0,0"
                     VerticalAlignment="Top"
-                    Width="178"
+                    Width="206"
                     Grid.ColumnSpan="2">
 
-          </ListBox>
+          </DataGrid>
           <GroupBox Header="Detaljer"
                     HorizontalAlignment="Left"
                     Height="280"
-                    Margin="121,32,0,0"
+                    Margin="128.2,32,0,0"
                     VerticalAlignment="Top"
-                    Width="356"
+                    Width="349"
                     Grid.ColumnSpan="2"
                     Grid.Column="1">
             <Grid HorizontalAlignment="Left"
@@ -141,7 +142,7 @@
                      Margin="10,67,0,0"
                      VerticalAlignment="Top"
                      Width="100"
-                     HorizontalContentAlignment="Right"  />              
+                     HorizontalContentAlignment="Right" />
               <TextBox x:Name="textBoxPrice"
                        HorizontalAlignment="Left"
                        Height="23"
@@ -161,21 +162,21 @@
                        Width="221"
                        VerticalContentAlignment="Center" />
               <ComboBox x:Name="comboBoxTypes"
-                       HorizontalAlignment="Left"
-                       Height="24"
-                        Margin="115,69,0,0"
-                        Text="TextBox"
-                       VerticalAlignment="Top"
-                       Width="221"
-                       VerticalContentAlignment="Center" />
-              <Button x:Name="buttonSubmitNewingrediense"
                         HorizontalAlignment="Left"
                         Height="24"
+                        Margin="115,69,0,0"
+                        Text="TextBox"
+                        VerticalAlignment="Top"
+                        Width="221"
+                        VerticalContentAlignment="Center" />
+              <Button x:Name="buttonSubmitNewingrediense"
+                      HorizontalAlignment="Left"
+                      Height="24"
                       Margin="115,98,0,0"
                       VerticalAlignment="Top"
                       Content="indsend ny ingrediens"
-                        Width="221"
-                        VerticalContentAlignment="Center"
+                      Width="221"
+                      VerticalContentAlignment="Center"
                       Click="ButtonSubmitNewingrediense_Click" />
             </Grid>
           </GroupBox>
@@ -231,7 +232,8 @@
                     VerticalAlignment="Top"
                     Width="250"
                     IsReadOnly="True"
-                    Grid.ColumnSpan="2" />
+                    Grid.ColumnSpan="2"
+                    MouseDoubleClick="DataGridAllIngredients_MouseDoubleClick" />
           <DataGrid x:Name="dataGridItemsInNewRecipe"
                     HorizontalAlignment="Left"
                     Height="179"
@@ -274,23 +276,16 @@
                   VerticalAlignment="Top"
                   Width="28"
                   RenderTransformOrigin="0.519,1.521"
-                  Grid.Column="1" />
+                  Grid.Column="1" 
+                  Click="ButtonMoveItemLeft_Click"/>
           <Button x:Name="buttonMoveItemRight"
                   Content="&gt;"
                   HorizontalAlignment="Left"
                   Margin="162.4,204,0,0"
                   VerticalAlignment="Top"
                   Width="28"
-                  Grid.Column="1" />
-          <Button x:Name="buttonSearchForRecipe"
-                  Content="Tilføj"
-                  HorizontalAlignment="Left"
-                  Margin="287.8,10,0,0"
-                  VerticalAlignment="Top"
-                  Width="75"
-                  Height="22"
-                  Grid.Column="1"
-                  Click="ButtonSearchForRecipe_Click" />
+                  Grid.Column="1" 
+                  Click="ButtonMoveItemRight_Click"/>
         </Grid>
       </TabItem>
     </TabControl>
